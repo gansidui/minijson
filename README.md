@@ -1,2 +1,2 @@
 # minijson
-A mini codec for json. Implemented in C.
+A mini codec for json, and is applicable to embedded systems
