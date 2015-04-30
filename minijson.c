@@ -22,7 +22,7 @@ static const char *parse_string(const char *str, char **out, int *out_len) {
 
 static const char *parse_number(const char *str, char **out, int *out_len) {
 	int len = 0;
-	if (!(*str == '-' || (*str >= '0') && (*str <= '9'))) {ep = str; return 0;}
+	if (!(*str == '-' || (*str >= '0' && *str <= '9'))) {ep = str; return 0;}
 	*out = (char*)str;
 	if (*str == '-') {len++; str++;}
 	while (*str >= '0' && *str <= '9') {len++; str++;}
@@ -37,7 +37,7 @@ static const char *parse_value(const char *str, char **out, int *out_len, json_t
 		*type = json_type_string;
 		return parse_string(str, out, out_len);
 	}
-	else if (*str == '-' || (*str >= '0') && (*str <= '9')) {
+	else if (*str == '-' || (*str >= '0' && *str <= '9')) {
 		*type = json_type_number;
 		return parse_number(str, out, out_len);
 	}
